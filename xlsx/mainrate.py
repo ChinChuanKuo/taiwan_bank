@@ -10,12 +10,12 @@ def get_information():
     for value in twder.currencies():
         worksheet.write(i+1, 0, i)
         worksheet.write(i+1, 1, value)
-        worksheet.write(i+1, 2, twder.now(value)[1])
-        worksheet.write(i+1, 3, twder.now(value)[2])
+        worksheet.write(i+1, 2, twder.past_day(value)[len(twder.past_day(value)-1)][1])
+        worksheet.write(i+1, 3, twder.past_day(value)[len(twder.past_day(value)-1)][2])
         i+=1
         print("writting %s successfully"%value)
         print("-------------------------------")
     workbook.close()
 
-if if __name__ == "__main__":
+if __name__ == "__main__":
     get_information()
